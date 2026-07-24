@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Become a Marine Safe Pioneer and help test the Marine Safe Android app." />
+  <title>Become a Marine Safe Pioneer</title>
+  <style>
+    :root {
+      --navy: #062c43;
+      --blue: #0b6fa4;
+      --blue-dark: #07547c;
+      --sky: #eaf7ff;
+      --white: #ffffff;
+      --text: #173042;
+      --muted: #5f7482;
+      --border: #cfe3ef;
+      --success: #16845b;
+      --warning: #fff6d8;
+      --shadow: 0 10px 28px rgba(6, 44, 67, 0.12);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f7fcff 0%, #eef8fc 100%);
+      line-height: 1.55;
+    }
+
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 3px 14px rgba(0,0,0,.16);
+    }
+
+    .nav {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .2px;
+      line-height: 1.05;
+      font-size: 1.1rem;
+    }
+
+    .brand span {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      opacity: .85;
+      margin-top: 3px;
+    }
+
+    .home-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 13px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 10px;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.22), transparent 35%),
+        linear-gradient(135deg, var(--blue), var(--navy));
+      color: var(--white);
+      padding: 54px 20px 68px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.3);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: .88rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 7vw, 3.6rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 680px;
+      font-size: 1.08rem;
+      opacity: .95;
+    }
+
+    main {
+      max-width: 900px;
+      margin: -34px auto 0;
+      padding: 0 16px 110px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .progress-panel {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .progress-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    .progress-item {
+      text-align: center;
+      font-size: .76rem;
+      color: var(--muted);
+    }
+
+    .progress-dot {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #e8f0f4;
+      color: #607784;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 6px;
+      font-weight: 800;
+      border: 2px solid #d4e2ea;
+    }
+
+    .progress-item.done .progress-dot {
+      background: var(--success);
+      border-color: var(--success);
+      color: var(--white);
+    }
+
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin: 18px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .step-label {
+      display: inline-block;
+      color: var(--blue-dark);
+      background: var(--sky);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: .82rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.55rem;
+    }
+
+    h3 {
+      color: var(--navy);
+      margin-top: 22px;
+    }
+
+    ul, ol { padding-left: 22px; }
+    li { margin-bottom: 8px; }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50px;
+      padding: 13px 18px;
+      border-radius: 12px;
+      border: 0;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .button:active { transform: scale(.99); }
+    .button-primary { background: var(--blue); color: var(--white); }
+    .button-primary:hover { background: var(--blue-dark); }
+    .button-secondary {
+      background: var(--white);
+      color: var(--blue-dark);
+      border: 2px solid var(--blue);
+    }
+
+    .help-note, .safety-note {
+      border-radius: 13px;
+      padding: 14px;
+      margin-top: 16px;
+    }
+
+    .help-note {
+      background: var(--sky);
+      border-left: 5px solid var(--blue);
+    }
+
+    .safety-note {
+      background: var(--warning);
+      border-left: 5px solid #e1a900;
+      color: #5d4700;
+      font-weight: 700;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    label {
+      font-weight: 750;
+      color: var(--navy);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      margin-top: 6px;
+      border: 1px solid #bcd2df;
+      border-radius: 11px;
+      padding: 13px;
+      font: inherit;
+      background: #fff;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .checkbox-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-weight: normal;
+    }
+
+    .checkbox-row input {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      flex: 0 0 auto;
+    }
+
+    .status-message {
+      display: none;
+      margin-top: 14px;
+      padding: 13px;
+      border-radius: 11px;
+      background: #e9f8f1;
+      color: #0f6947;
+      border: 1px solid #b8e7d4;
+      font-weight: 700;
+    }
+
+    .feedback-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .feedback-option {
+      min-height: 82px;
+      border: 2px solid var(--border);
+      background: #fff;
+      border-radius: 13px;
+      padding: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      color: var(--navy);
+    }
+
+    .feedback-option.active {
+      border-color: var(--blue);
+      background: var(--sky);
+    }
+
+    .reset {
+      text-align: center;
+      margin: 26px 0 0;
+    }
+
+    .reset button {
+      border: 0;
+      background: transparent;
+      color: var(--blue-dark);
+      text-decoration: underline;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 28px 16px 100px;
+    }
+
+    .sticky-next {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 30;
+      max-width: 620px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+
+    @media (min-width: 700px) {
+      .button { width: auto; min-width: 230px; }
+      .step-card { padding: 32px; }
+      .sticky-next { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .progress-row {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 14px;
+      }
+      .feedback-options { grid-template-columns: 1fr; }
+      .progress-item { font-size: .72rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">Marine Safe<span>Stay accountable on the water</span></a>
+      <a class="home-link" href="index.html">Home</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Android testing program</div>
+      <h1>Become a Marine Safe Pioneer</h1>
+      <p>Help shape Marine Safe before public release. Follow these simple steps to join, install the app, complete a quick test and send feedback.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="progress-panel" aria-label="Testing progress">
+      <div class="progress-row" id="progressRow">
+        <div class="progress-item" data-progress="1"><div class="progress-dot">1</div><span>Check phone</span></div>
+        <div class="progress-item" data-progress="2"><div class="progress-dot">2</div><span>Join list</span></div>
+        <div class="progress-item" data-progress="3"><div class="progress-dot">3</div><span>Join test</span></div>
+        <div class="progress-item" data-progress="4"><div class="progress-dot">4</div><span>Install</span></div>
+        <div class="progress-item" data-progress="5"><div class="progress-dot">5</div><span>Test trip</span></div>
+        <div class="progress-item" data-progress="6"><div class="progress-dot">6</div><span>Feedback</span></div>
+      </div>
+    </section>
+
+    <section class="step-card" id="step1">
+      <span class="step-label">Step 1 of 6</span>
+      <h2>Check your phone</h2>
+      <p>The current Marine Safe test version is available through Google Play for Android phones.</p>
+      <h3>You will need</h3>
+      <ul>
+        <li>An Android phone</li>
+        <li>A Google account</li>
+        <li>Access to the Google Play Store</li>
+      </ul>
+      <button class="button button-primary complete-step" data-step="1" data-next="step2">I’m using Android — Continue</button>
+      <div class="help-note"><strong>Using an iPhone?</strong> The iPhone testing version is not available yet.</div>
+    </section>
+
+    <section class="step-card" id="step2">
+      <span class="step-label">Step 2 of 6</span>
+      <h2>Join the Pioneer tester list</h2>
+      <p>Enter the Google account email address used on your Android phone.</p>
+
+      <!-- SETUP REQUIRED: Replace YOUR_TESTER_FORM_ENDPOINT with your real Formspree or form service endpoint. -->
+      <form id="testerForm" action="YOUR_TESTER_FORM_ENDPOINT" method="POST">
+        <label>Full name
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+        <label>Google account email
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label>Phone model <span style="font-weight:normal">(optional)</span>
+          <input type="text" name="phone_model" placeholder="Example: Samsung Galaxy S23" />
+        </label>
+        <label>Town or country <span style="font-weight:normal">(optional)</span>
+          <input type="text" name="location" placeholder="Example: Mackay, Australia" />
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" name="contact_permission" required />
+          <span>I agree to be contacted about Marine Safe testing.</span>
+        </label>
+        <button class="button button-primary" type="submit">Submit Pioneer Details</button>
+      </form>
+
+      <div class="status-message" id="testerSuccess">
+        Thanks! Your tester details have been received. You may need to wait until your Google account has been added to the Marine Safe tester list.
+      </div>
+
+      <button class="button button-secondary complete-step" data-step="2" data-next="step3">I’ve Been Given Access — Continue</button>
+    </section>
+
+    <section class="step-card" id="step3">
+      <span class="step-label">Step 3 of 6</span>
+      <h2>Become a Google Play tester</h2>
+      <p>Tap the button below using the same Google account you submitted above.</p>
+
+      <!-- SETUP REQUIRED: Replace GOOGLE_PLAY_OPT_IN_LINK_HERE with the closed-testing opt-in URL from Google Play Console. -->
+      <a class="button button-primary" href="GOOGLE_PLAY_OPT_IN_LINK_HERE" target="_blank" rel="noopener">Join Marine Safe Testing</a>
+
+      <h3>When the Google page opens</h3>
+      <ol>
+        <li>Make sure the correct Google account is selected.</li>
+        <li>Tap <strong>Become a tester</strong>.</li>
+        <li>Return to this page.</li>
+      </ol>
+
+      <button class="button button-secondary complete-step" data-step="3" data-next="step4">I Have Become a Tester — Continue</button>
+    </section>
+
+    <section class="step-card" id="step4">
+      <span class="step-label">Step 4 of 6</span>
+      <h2>Install Marine Safe</h2>
+      <p>Once you have joined the test, tap below to open Marine Safe in Google Play.</p>
+
+      <!-- SETUP REQUIRED: Replace GOOGLE_PLAY_STORE_TEST_LINK_HERE with the app's Google Play test listing URL. -->
+      <a class="button button-primary" href="GOOGLE_PLAY_STORE_TEST_LINK_HERE" target="_blank" rel="noopener">Install Marine Safe</a>
+
+      <div class="help-note">
+        <strong>If Google Play says the app is unavailable:</strong>
+        <ul>
+          <li>Check that you joined using the correct Google account.</li>
+          <li>Wait a few minutes and try again.</li>
+          <li>Close and reopen Google Play.</li>
+        </ul>
+      </div>
+
+      <a class="button button-secondary" href="mailto:marinesafeapp@gmail.com?subject=Help%20installing%20Marine%20Safe%20tester%20app">I Need Installation Help</a>
+      <button class="button button-secondary complete-step" data-step="4" data-next="step5">The App Is Installed — Continue</button>
+    </section>
+
+    <section class="step-card" id="step5">
+      <span class="step-label">Step 5 of 6</span>
+      <h2>Complete one simple test trip</h2>
+      <p>You do not need to go boating for this test. You can complete it safely from home.</p>
+      <ol>
+        <li>Open Marine Safe.</li>
+        <li>Complete the profile setup.</li>
+        <li>Select a launch ramp.</li>
+        <li>Set the people on board.</li>
+        <li>Set a return time shortly ahead.</li>
+        <li>Start the trip.</li>
+        <li>Check that the active-trip screen appears.</li>
+        <li>Open <strong>Manage Trip</strong>.</li>
+        <li>End the trip.</li>
+      </ol>
+
+      <div class="safety-note">
+        This is only a software test. Do not rely on Marine Safe as an emergency service or replacement for 000, marine radio or official marine rescue services.
+      </div>
+
+      <button class="button button-primary complete-step" data-step="5" data-next="step6">I Completed the Test — Continue</button>
+    </section>
+
+    <section class="step-card" id="step6">
+      <span class="step-label">Step 6 of 6</span>
+      <h2>Tell us how it went</h2>
+      <p>Your feedback helps make Marine Safe easier and safer to use.</p>
+
+      <div class="feedback-options" role="group" aria-label="Feedback type">
+        <button class="feedback-option" type="button" data-type="Everything worked">Everything worked</button>
+        <button class="feedback-option" type="button" data-type="I found a problem">I found a problem</button>
+        <button class="feedback-option" type="button" data-type="I need help">I need help</button>
+      </div>
+
+      <!-- SETUP REQUIRED: Replace YOUR_FEEDBACK_FORM_ENDPOINT with your real Formspree or form service endpoint. -->
+      <form id="feedbackForm" action="YOUR_FEEDBACK_FORM_ENDPOINT" method="POST">
+        <input type="hidden" name="feedback_type" id="feedbackType" required />
+        <label>Full name
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+        <label>Email
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label>What happened?
+          <textarea name="feedback" required placeholder="Tell us what worked, what was confusing, or what went wrong."></textarea>
+        </label>
+        <label>Phone used
+          <input type="text" name="phone_model" required placeholder="Example: Samsung Galaxy S23" />
+        </label>
+        <label>App version <span style="font-weight:normal">(optional)</span>
+          <input type="text" name="app_version" placeholder="Example: 1.0.1" />
+        </label>
+        <button class="button button-primary" type="submit">Send Feedback</button>
+      </form>
+
+      <div class="status-message" id="feedbackSuccess">
+        Thank you for helping test Marine Safe. Your feedback will help us improve the app before public release.
+      </div>
+    </section>
+
+    <div class="reset">
+      <button type="button" id="resetProgress">Reset my progress</button>
+    </div>
+  </main>
+
+  <footer>
+    Marine Safe App<br />
+    Stay safe on the water. © Marine Safe App
+  </footer>
+
+  <button class="button button-primary sticky-next" id="stickyNext">Continue to Next Step</button>
+
+  <script>
+    const totalSteps = 6;
+
+    function isDone(step) {
+      return localStorage.getItem(`marineSafeTesterStep${step}`) === "done";
+    }
+
+    function markDone(step) {
+      localStorage.setItem(`marineSafeTesterStep${step}`, "done");
+      updateProgress();
+    }
+
+    function updateProgress() {
+      document.querySelectorAll(".progress-item").forEach(item => {
+        const step = Number(item.dataset.progress);
+        item.classList.toggle("done", isDone(step));
+        item.querySelector(".progress-dot").textContent = isDone(step) ? "✓" : step;
+      });
+
+      const next = getNextStep();
+      const sticky = document.getElementById("stickyNext");
+      sticky.textContent = next <= totalSteps ? `Continue to Step ${next}` : "Testing Complete";
+    }
+
+    function getNextStep() {
+      for (let step = 1; step <= totalSteps; step++) {
+        if (!isDone(step)) return step;
+      }
+      return totalSteps + 1;
+    }
+
+    function scrollToStep(id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.querySelectorAll(".complete-step").forEach(button => {
+      button.addEventListener("click", () => {
+        markDone(Number(button.dataset.step));
+        scrollToStep(button.dataset.next);
+      });
+    });
+
+    document.getElementById("stickyNext").addEventListener("click", () => {
+      const next = getNextStep();
+      if (next <= totalSteps) scrollToStep(`step${next}`);
+      else scrollToStep("step6");
+    });
+
+    document.querySelectorAll(".feedback-option").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".feedback-option").forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
+        document.getElementById("feedbackType").value = button.dataset.type;
+      });
+    });
+
+    function setupPlaceholderForm(formId, successId, stepNumber) {
+      const form = document.getElementById(formId);
+      form.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        if (formId === "feedbackForm" && !document.getElementById("feedbackType").value) {
+          alert("Please choose a feedback option first.");
+          return;
+        }
+
+        const endpoint = form.getAttribute("action");
+        if (endpoint.startsWith("YOUR_")) {
+          alert("This form is not connected yet. The website owner needs to add the form endpoint.");
+          return;
+        }
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if (!response.ok) throw new Error("Form submission failed");
+
+          document.getElementById(successId).style.display = "block";
+          markDone(stepNumber);
+          form.reset();
+          if (formId === "feedbackForm") {
+            document.querySelectorAll(".feedback-option").forEach(b => b.classList.remove("active"));
+          }
+        } catch (error) {
+          alert("Sorry, the form could not be sent. Please try again or email marinesafeapp@gmail.com.");
+        }
+      });
+    }
+
+    setupPlaceholderForm("testerForm", "testerSuccess", 2);
+    setupPlaceholderForm("feedbackForm", "feedbackSuccess", 6);
+
+    document.getElementById("resetProgress").addEventListener("click", () => {
+      if (!confirm("Reset all completed tester steps on this phone?")) return;
+      for (let step = 1; step <= totalSteps; step++) {
+        localStorage.removeItem(`marineSafeTesterStep${step}`);
+      }
+      updateProgress();
+      scrollToStep("step1");
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>
