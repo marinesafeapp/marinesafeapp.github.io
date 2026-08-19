@@ -1,0 +1,13 @@
+MARINE SAFE WEBSITE REFRESH
+
+1. In the marinesafeapp.github.io repository, replace the current index.html with this new index.html.
+2. Open the existing assets folder.
+3. Upload these four files into assets:
+   marine-safe-hero.png
+   app-ready.png
+   app-on-water.png
+   app-gear.png
+4. Do NOT delete pioneer.html. The refreshed homepage links to your existing Pioneer tester page.
+5. Wait for GitHub Pages to publish, then refresh marinesafeapp.com.au.
+
+This version updates the Pioneer section to clearly include both Android and iOS/iPhone testing.
